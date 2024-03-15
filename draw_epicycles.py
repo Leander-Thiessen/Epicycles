@@ -231,7 +231,7 @@ def get_fourier_coeffs(name,points,recompute_fourier=False):
 
 def main():
     print("Computing DFT:")
-    png_name = "westie"
+    png_name = "algo"
     filename=f"pictures/{png_name}.png"
     recompute_fourier = False
     M = 0
