@@ -210,12 +210,11 @@ def get_fourier_coeffs(name,points,recompute_fourier=False):
     
     return r,w,phi
     
-    
 
 
 def main():
     print("Computing DFT:")
-    png_name = "algo"
+    png_name = "westie"
     filename=f"pictures/{png_name}.png"
     recompute_fourier = False
     M = 0
@@ -240,7 +239,4 @@ def main():
         screen.update()
 
 
-#settings: 
-# algo.png - M=4000, speed=120
-# panda.png - M=1000
 main()
