@@ -72,7 +72,6 @@ class Epicycle:
 
         self.t += dt * self.speed
 
-
         self.x = self.r * np.cos(self.w * self.t + self.phi)
         self.y = self.r * np.sin(self.w * self.t + self.phi) 
 
@@ -107,13 +106,11 @@ class Epicycle:
                     self.end_positions_shifted = []
                 
                 elif event.key == pygame.K_PLUS:
-                    self.speed += 20
-
+                    self.speed += 40
 
                 elif event.key == pygame.K_MINUS:
-                    self.speed -= 20
+                    self.speed -= 40
      
-
                 if event.key == pygame.K_q:
                     pygame.quit()
                     sys.exit()
@@ -128,11 +125,7 @@ class Epicycle:
         else:
             gfxdraw.aacircle(display, round(x), round(y), round(radius), color)
     
-
     def draw(self,display,frame_count):
-
-        # for p in self.points:
-        #    self.draw_circle(display,p[0]+WIDTH/2,-p[1]+HEIGHT/2,1,WHITE,True)
 
         self.x_screen = WIDTH/2
         self.y_screen = HEIGHT/2
@@ -149,7 +142,6 @@ class Epicycle:
             self.x_screen += self.x[i]
             self.y_screen -= self.y[i]
             if i < 20:
-                
                 self.draw_circle(display,self.x_screen,self.y_screen,self.r[i+1],(255,255,255,20),False)
 
             if i<20:
@@ -165,12 +157,6 @@ class Epicycle:
         if len(self.end_positions) > 2:
             pygame.draw.aalines(display,TEAL,False,self.end_positions)
             pygame.draw.aalines(display,TEAL,False,self.end_positions_shifted)
-
-
-
-            
-
-
 
 
 def transform_points(points):
@@ -217,13 +203,11 @@ def get_fourier_coeffs(name,points,recompute_fourier=False):
             file.write("#r w phi\n")
             for (r_i, w_i, phi_i) in zip(r, w, phi):
                 file.write(f"{r_i} {w_i} {phi_i}\n")
-
     else:       
         data = np.genfromtxt(filename,skip_header=1)
         r,w,phi = data[:,0],data[:,1],data[:,2]
         return r,w,phi
     
-
     return r,w,phi
     
     
@@ -237,7 +221,6 @@ def main():
     M = 0
     points = import_points_from_png(filename=filename,width=WIDTH,height=HEIGHT,M=M)
     r,w,phi = get_fourier_coeffs(png_name,points,recompute_fourier)
-
 
     print("Displaying...")
     pygame.init()
